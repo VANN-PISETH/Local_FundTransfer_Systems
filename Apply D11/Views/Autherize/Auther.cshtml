@@ -1,0 +1,511 @@
+﻿
+@{
+    ViewBag.Title = "Auther";
+}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/assets/css/bootstrap.css">
+<link rel="stylesheet" href="~/assets/vendors/simple-datatables/style.css">
+<link rel="stylesheet" href="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" href="~/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" href="~/assets/css/app.css">
+<link rel="shortcut icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped" id="table1">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Transaction ID</th>
+                        <th>User ID</th>
+                        <th>Account Number</th>
+                        <th>Transaction Type</th>
+                        <th>Total</th>
+                        <th>CCY</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<div class="modal fade bd-example-modal-lg" id="AutherForm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Transaction Information</h4>
+            </div>
+            <div class="modal-body">
+                <form class="needs-novalidate-new" novalidate>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Transaction ID :
+                            <input type="text" class="form-control" id="txttxnid" readonly />
+                            Account Number :
+                            <input type="text" class="form-control" id="txtaccnum" readonly />
+
+                            Transaction Type :
+                            <input type="text" class="form-control" id="txttxntype" readonly />
+
+
+                        </div>
+                        <div class="col-sm-6">
+                            Currency :
+                            <input type="text" class="form-control" id="txtccy" readonly />
+                            Transaction Date :
+                            <input type="text" class="form-control" id="txtdate" readonly />
+                            Total :
+                            <input type="text" class="form-control" id="txttotal" readonly />
+
+                        </div>
+                        <div class="form-group">
+                            Status :
+                            <select class="form-control" id="cbStatus">
+                                <option value="Approved">Approved</option>
+                                <option value="Unapproved">Unapproved</option>
+                            </select>
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <button type="button" id="btnapprove" class="btn btn-primary">Approval</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Reject</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade" id="AutherForm" tabindex="-1" role="dialog" data-backdrop="Static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Transaction Information</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-novalidate-new" novalidate>
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                User Code :
+                                <input type="text" class="form-control" id="txtUserCode" required />
+                                <div class="invalid-feedback">Please input User Code</div>
+                                Full Name :
+                                <input type="text" class="form-control" id="txtFullName" required />
+                                <div class="invalid-feedback">Please input Name</div>
+                                Employee Code :
+                                <input type="text" class="form-control" id="txtEmCode" />
+                                Password :
+                                <input type="text" class="form-control" value="SM12345" id="txtPassword" readonly />
+                            </div>
+                            <div class="col-sm-6">
+                                Branch :
+                                <select class="form-control" id="cbBranch"> </select>
+                                <div class="invalid-feedback">Please select branch</div>
+                                Role :
+                                <select class="form-control" id="cbRole">
+                                    <option value="A">Admin</option>
+                                    <option value="U" selected>User</option>
+                                </select>
+                                Lock :
+                                <select class="form-control" id="cbLock">
+                                    <option value="Y">Yes</option>
+                                    <option value="N" selected>No</option>
+                                </select>
+                                Status :
+                                <select class="form-control" id="cbStatus">
+                                    <option value="A" selected>Active</option>
+                                    <option value="I">Inactive</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <hr />
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>*@
+@*<button type="button" onclick="show('1','ee')">click me</button>*@
+@*<!doctype html>
+    <html>
+    <head>
+
+        <style>
+            table, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <p>click on each tr element to alert its index position in the table:</p>
+        <table>
+            <tr onclick="myfunction(this)">
+                <td  >click to show rowindex</td>
+            </tr>
+            <tr onclick="myfunction(this)">
+                <td>click to show rowindex</td>
+            </tr>
+            <tr onclick="myfunction(this)">
+                <td>click to show rowindex</td>
+            </tr>
+        </table>
+
+        <script>
+            function myfunction(x) {
+                alert("row index is: " + x.rowindex);
+            }
+        </script>
+
+    </body>
+    </html>*@
+
+<script src="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="~/assets/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/vendors/simple-datatables/simple-datatables.js"></script>
+<script src="~/assets/js/main.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/pagination.js"></script>
+<script src="~/Scripts/Pagination.min.js"></script>
+<script type="text/javascript">
+    //$('#table2').pagination({
+    //    dataSource: 'https://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?',
+    //    locator: 'items',
+    //    totalNumberLocator: function(response) {
+    //        // you can return totalNumber by analyzing response content
+    //        return Math.floor(Math.random() * (1000 - 100)) + 100;
+    //    },
+    //    pageSize: 20,
+    //    ajax: {
+    //        beforeSend: function() {
+    //            dataContainer.html('Loading data from flickr.com ...');
+    //        }
+    //    },
+    //    callback: function(data, pagination) {
+    //        // template method of yourself
+    //        var html = template(data);
+    //        dataContainer.html(html);
+    //    }
+    //})
+
+
+    //$(document).ready(function () {
+    //    $('#demo').pagination({
+    //        dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 195],
+    //        callback: function (data, pagination) {
+    //            // template method of yourself
+    //            var html = template(data);
+    //            dataContainer.html(html);
+    //        }
+    //    })
+    //});
+
+
+ //var table = document.getElementById('table1');
+    //for (var i = 1, i < table.rows.length; i++)
+    //{
+    //    table.rows[i].onclick = function ()
+    //    {
+    //        document.getElementById('')
+    //    };
+    //}
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+   /* $.fn.dataTable.moment('M/D/YYYY');*/
+
+    //function convertJsonDateToShortDate(data) {
+    //    // This function converts a json date to a short date
+    //    // e.g. /Date(1538377200000)/ to 10/1/2018
+
+    //    const dateValue = new Date(parseInt(data.substr(6)));
+    //    return dateValue.toLocaleDateString();
+    //}
+  //  $(document).ready(function () {
+
+        @*function Get() {
+            ajax: {
+                url:'@Url.Action("GetAllUser","Autherize")',
+                type: 'GET',
+                dataType: 'json',
+                data: { },
+            }
+            columns: [
+                { data: UserID},
+                { data: AccID },
+                { data: TxnType},
+                { data: Total },
+                { data: CCY },
+                { data: TxnDate }
+
+                //{
+                //    'data': 'StartDate',
+                //    'render': function (jsonDate) {
+                //        var date = new Date(parseInt(jsonDate.substr(6)));
+                //        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+                //        return ("0" + date.getDate()).slice(-2) + '-' + month + '-' + date.getFullYear();
+                //    }
+                //},
+                //{
+                //    'data': 'Salary',
+                //    'render': function (salary) {
+                //        return '$' + salary;
+                //    }
+                //}
+            ]
+        }*@
+
+
+        //$('tr').click(function () {
+        //    alert('values: ' + $(this).data('a'));
+        //});
+    //$('#table1 tbody').on('click', 'tr', function (x) {
+    //    alert(x)
+    //    //$('#txttotal').val(data.UserID)
+    //    //$('#Total').modal('show')
+    //})
+    $('#btnapprove').click(function () {
+        var S = {}
+        S.status = $('#cbStatus').val()
+        S.TxnID = $('#txttxnid').val()
+        $.ajax({
+            url: '@Url.Action("Updatestatus", "Autherize")',
+            method: 'POST',
+            data: {
+                txn: S
+            },
+            success: function (data) {
+                if (data == 0) {
+                    alert('Update Successfully')
+                }
+                $('#table1 tbody').empty();
+                Getunapprove()
+            }
+        });
+    });
+    @*function Get() {
+            $.ajax({
+            type: 'GET',
+            url: '@Url.Action("GetAllUser","Autherize")',
+            data: {},
+            dataType: 'json',
+                success: function (data) {
+
+                var rows;
+                    $.each(data, function (i, item) {
+                    rows += "<tr>"
+                        + "<td>" + (i += 1) + "</td>"
+                        + "<td>" + item.TxnID + "</td>"
+                        + "<td>" + item.UserID + "</td>"
+                        + "<td>" + item.AccID + "</td>"
+                        + "<td>" + item.TxnType + "</td>"
+                        + "<td>" + item.Total + "</td>"
+                        + "<td>" + item.CCY + "</td>"
+                        + "<td>" + item.DateTxn + "</td>"
+                        + "<td>" + item.status + "</td>"
+                        + "<td >" + "<a onclick=show('" + item.TxnID+"','" + item.AccID + "','" + item.TxnType + "','" + item.Total + "','" + item.CCY + "','" + item.DateTxn + "','" + item.status + "')><i class='fa fa-eye'  style='font-size:31px'></i></a>" + "</td>"
+                        + "</tr>";
+                });
+                  $('#table1 tbody').append(rows);
+                }
+            });
+    }
+    Get()*@
+    function Getunapprove() {
+            $.ajax({
+            type: 'GET',
+            url: '@Url.Action("showunapproved", "Autherize")',
+            data: {},
+            dataType: 'json',
+                success: function (data) {
+                var rows;
+                    $.each(data, function (i, item) {
+                    rows += "<tr>"
+                        + "<td>" + (i += 1) + "</td>"
+                        + "<td>" + item.TxnID + "</td>"
+                        + "<td>" + item.UserID + "</td>"
+                        + "<td>" + item.AccID + "</td>"
+                        + "<td>" + item.TxnType + "</td>"
+                        + "<td>" + item.Total + "</td>"
+                        + "<td>" + item.CCY + "</td>"
+                        + "<td>" + item.DateTxn + "</td>"
+                        + "<td>" + item.status + "</td>"
+                        + "<td >" + "<a onclick=show('" + item.TxnID+"','" + item.AccID + "','" + item.TxnType + "','" + item.Total + "','" + item.CCY + "','" + item.DateTxn + "','" + item.status + "')><i class='fa fa-eye'  style='font-size:31px'></i></a>" + "</td>"
+                        + "</tr>";
+                });
+                  $('#table1 tbody').append(rows);
+                }
+            });
+    }
+    Getunapprove()
+    function show(TxnID,AccID, TxnType,Total,CCY,DateTxn,status) {
+        //alert(aa + "  " + bb)
+        //alert("Index : "+Index+"Currency : "+CCY)
+        //var data = table.row(index).data()
+        $('#txttxnid').val(TxnID)
+        $('#txtaccnum').val(AccID)
+        $('#txttxntype').val(TxnType)
+        $('#txttotal').val(Total)
+        $('#txtccy').val(CCY)
+        $('#txtdate').val(DateTxn)
+        $('#cbStatus').val(status)
+        $('#AutherForm').modal('show')
+        // console.log(x)
+
+    }
+</script>
+
+<!--<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <table id="table1" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>User ID</th>
+                        <th>Account Number</th>
+                        <th>Transaction Type</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Fee</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>-->
+@*<table class="table table-striped" id="table1">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>User ID</th>
+                <th>Account Number</th>
+                <th>Transaction Type</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Fee</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>*@
+<!--</div>
+    </div>
+</section>-->
+@*<div class="table-responsive">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table" id="example">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>User ID</th>
+                            <th>Account Number</th>
+                            <th>Transaction Type</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Fee</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>*@
+@*<table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>User ID</th>
+                <th>Account Number</th>
+                <th>Transaction Type</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Fee</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>*@
+@*<script src="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/assets/js/bootstrap.bundle.min.js"></script>*@
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            //var table = $('#example').DataTable({
+            //    lengthChange: false,
+            //    buttons: ['copy', 'excel', 'pdf', 'colvis']
+            //});
+
+            //table.buttons().container()
+            //    .appendTo('#example_wrapper .col-md-6:eq(0)');
+            function Get() {
+
+                $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetAllUser","Autherize")',
+                data: {},
+                dataType: 'json',
+                  success: function (data){
+                    var rows;
+                    $.each(data, function (i, item) {
+                        rows += "<tr >"
+                            + "<td>" + (i += 1) + "</td>"
+                            + "<td>" + item.UserID + "</td>"
+                            + "<td>" + item.AccID + "</td>"
+                            + "<td>" + item.TxnType + "</td>"
+                            + "<td>" + item.TxnDate + "</td>"
+                            + "<td>" + item.Total + "</td>"
+                            + "<td>" + item.FeePay + "</td>"
+                            + "<td >" + '<a onclick="show()" ><i class="fa fa-eye"  style="font-size:31px"></i></a>' + "</td>"
+
+                            + "</tr>";
+                    });
+                      $('#example tbody').append(rows);
+                  }
+                });
+            }
+            Get()
+            //$('#tblProducts tbody').on('click', 'tr', function () {
+            //    if ($(this).hasClass('selected')) {
+            //        $().removeClass('selected');
+            //        alert('ffffffff')
+            //    } else {
+            //        table.$('tr.selected').removeClass('selected');
+            //        $(this).addClass('selected');
+            //    }
+            //})
+        });
+        function show() {
+            alert('ffffffff')
+        }
+    </script>*@
+@*<script src="~/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
+    </script>
+
+    <script src="~/assets/js/main.js"></script>*@
+

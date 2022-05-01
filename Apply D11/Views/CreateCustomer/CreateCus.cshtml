@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "CreateCus";
+}
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" href="~/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" href="~/assets/css/app.css">
+<link rel="shortcut icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Create New Customer</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="row">
+                                <!--<div class="col-md-6 col-12">-->
+                                    @*<div class="form-group">
+                                        <label for="first-name-column">Account Number</label>
+                                        <input type="text" id="txtAccNum" class="form-control"
+                                               placeholder="Account Number" name="" readonly>
+                                    </div>*@
+                                <!--</div>-->
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">Customer Name</label>
+                                        <input type="text" id="txtCustomerName" class="form-control"
+                                               name="" placeholder="Customer Name">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">Account Type</label>
+                                        <input type="text" id="txtAccType" class="form-control"
+                                               placeholder="Account Type" name="">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">Gender</label>
+                                        <input type="text" id="txtGender" class="form-control"
+                                               name="" placeholder="Gender">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">CCY</label>
+                                        <input type="text" id="txtCCY" class="form-control"
+                                               placeholder="Currency" name="">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Phone</label>
+                                        <input type="text" id="txtPhone" class="form-control"
+                                               name="" placeholder="Phone">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Address</label>
+                                        <input type="text" id="txtAddress" class="form-control"
+                                               name="" placeholder="Address">
+                                    </div>
+                                </div>
+
+                                @*<div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Email</label>
+                                        <input type="email" id="txtEmail" class="form-control"
+                                               name="email-id-column" placeholder="Email">
+                                    </div>
+                                </div>*@
+
+                                @*</div><div class="col-md-6 col-12">
+                <div class="form-group">
+                <label for="email-id-column">Balance</label>
+                <input type="email" id="txtBalance" class="form-control"
+                    name="email-id-column" placeholder="Balance">
+                </div>
+                </div>*@
+
+
+                            </div>
+                        </form>
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" id="btncreate"
+                                    class="btn btn-primary me-1 mb-1">
+                                Create
+                            </button>
+                            <button type="reset"
+                                    class="btn btn-light-secondary me-1 mb-1">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="acc" tabindex="-1" role="dialog" data-backdrop="Static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Account</h5>
+
+            </div>
+            <div class="modal-body">
+                <form class="needs-novalidate-update">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+
+                            Account Number :
+
+                            <input type="text" id="txtaccnum" class="form-control"
+                                   name="Transfer-column" readonly>
+                        </div>
+                    </div>
+                    <hr/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+   
+    $('#btncreate').click(function () {
+       
+            var S = {}
+            S.AccNum = $('#txtAccNum').val()
+            S.AccType = $('#txtAccType').val()
+            S.CCY = $('#txtCCY').val()
+            S.CusName = $('#txtCustomerName').val()
+            S.Gender = $('#txtGender').val()
+            S.Address = $('#txtAddress').val()
+            S.Phone = $('#txtPhone').val()
+            S.Email = $('#txtEmail').val()
+
+            $.ajax({
+                url: '@Url.Action("AddCus", "CreateCustomer")',
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    cus: S
+                },
+                success: function (data) {
+                    data = JSON.parse(data);
+                    $('#txtaccnum').val(data.AccNum);
+                    $('#acc').modal('show')
+
+                }
+            });
+         // alert('Balance')
+    });
+</script>
+
+<script src="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="~/assets/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/js/main.js"></script>

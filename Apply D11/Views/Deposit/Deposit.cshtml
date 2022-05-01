@@ -1,0 +1,531 @@
+﻿
+@{
+    ViewBag.Title = "Deposit";
+}
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/assets/css/bootstrap.css">
+<link rel="stylesheet" href="~/assets/vendors/iconly/bold.css">
+<link rel="stylesheet" href="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" href="~/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" href="~/assets/css/app.css">
+<link rel="stylesheet" href="~/assets/vendors/sweetalert2/sweetalert2.min.css">
+<link rel="shortcut icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<form class="needs-novalidate-update">
+    <section id="basic-horizontal-layouts">
+        <div class="row match-height">
+            <div class="col-md-12 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">User</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-horizontal">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <input type="text" id="txtUserID" class="form-control"
+                                                   placeholder="UserID" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="basic-horizontal-layouts">
+        <div class="row match-height">
+            <div class="col-md-12 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Customer Information</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form form-horizontal">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Account Number</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" id="txtAccIDSender" class="form-control"
+                                                           name="SenderAcc" placeholder="Account Number" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-person-circle"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Name" id="Sender-Name" readonly>
+
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-envelope"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Phone</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Phone" id="Sender-Phone" readonly>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-phone"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Gender</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Gender" id="Sender-Gender" readonly>
+
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-gear-fill"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Address</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Address" id="Sender-Address" readonly>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-house"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Balance</label>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group has-icon-left">
+                                                <div class="position-relative">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Balance" id="Sender-Balance" readonly>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-wallet"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">CCY</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-inline-block me-2 mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rdoCCY"
+                                           id="rdoUSD" value="USD" required>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        USD
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="d-inline-block me-2 mb-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rdoCCY"
+                                           id="rdoKHR" value="KHR" checked required>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        KHR
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="multiple-column-form">
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"></h4>
+                    </div>
+
+                    <div class="card-content">
+                        <div class="card-body">
+                            <form class="form">
+                                <div class="row">
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
+                                            <label for="Amount">Amount</label>
+                                            <input type="text" id="txtAmount" class="form-control"
+                                                   placeholder="Amount" name="Amount-column">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
+                                            <label for="Fee">Fee Charge</label>
+                                            <input type="text" id="txtFee" class="form-control"
+                                                   placeholder="Fee Charge" name="Fee-column" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-12">
+                                        <div class="form-group">
+                                            <label for="ExRate-column" id="lbExRate">Excharge Rate</label>
+                                            <input type="text" id="txtExRate" class="form-control"
+                                                   placeholder="Excharge Rate" name="ExRate-column" />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 col-12">
+
+                                <button class="btn btn-outline-success btn-lg btn-block" type="submit" data-target="#Total" data-toggle="modal" id="Txn">
+                                    Deposit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<div class="modal fade" id="Total" tabindex="-1" role="dialog" data-backdrop="Static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Total</h5>
+
+            </div>
+            <div class="modal-body">
+                <form class="needs-novalidate-update">
+                    <div class="row">
+
+                        <div class="col-sm-12">
+
+                            Total Amount :
+
+                            <input type="text" id="txtTotal" class="form-control"
+                                   name="Transfer-column" readonly>
+                        </div>
+                    </div>
+                    <hr />
+
+
+                </form>
+
+                <button type="submit" class="btn btn-primary" id="btnSave">Sumit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="idMsg" tabindex="-1" role="dialog" data-backdrop="Static">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Message
+            </div>
+            <div class="modal-body">
+                <div id="msg">
+                    Transaction Successfully
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="iderrMsg" tabindex="-1" role="dialog" data-backdrop="Static">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Message
+            </div>
+            <div class="modal-body">
+                <div id="msg">
+                    Transaction False !!!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#Txn').click(function () {
+            $("input").prop('required', true);
+            $('#Total').modal('show')
+
+        });
+        //$('#back').click(function () {
+        //    $('#idMsg').modal('hide')
+        //});
+        function Dep() {
+             var n = $('#txtAccIDSender');
+            if (n.val().length > 0) {
+                var ANum = $('#txtAccIDSender').val();
+
+                $.ajax({
+                    url: '@Url.Action("GetValues", "Deposit")',
+                    method: 'GET',
+
+                    data: {
+                        AccNum: ANum
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        $('#Sender-Name').val(data.CusName);
+                        $('#Sender-Gender').val(data.Gender);
+                        $('#Sender-Phone').val(data.Phone);
+                        $('#Sender-Address').val(data.Address);
+                        $('#Sender-Balance').val(data.Balance);
+
+                    },
+                    error: function (err) {
+                        console.error(err);
+                    }
+                });
+            }
+        }
+        $("#txtAccIDSender").change(function () {
+            Dep()
+        });
+        $("#txtAccIDSender").change(function () {
+
+            $('#Status').html("Checking....");
+            $.post("@Url.Action("CheckAccNum", "Deposit")",
+                {
+                    AccNum: $('#txtAccIDSender').val()
+                },
+                function (data) {
+                    if (data == 0) {
+                        $('#Status').html('<font color="Green"> Have </font>');
+                        $('#txtAccIDSender').css("border-color", "Green");
+                    }
+                    else if (data == 1) {
+                        $('#Status').html('<font color="Red"> Dont have </font>');
+                        $('#txtAccIDSender').css("border-color", "Red");
+
+                        alert('This Account Number do not have in system')
+                    }
+                });
+        });
+        $("#txtUserID").change(function () {
+
+            $('#Status').html("Checking....");
+            $.post("@Url.Action("CheckUserID", "Deposit")",
+                {
+                    UserID: $('#txtUserID').val()
+                },
+                function (data) {
+                    if (data == 0) {
+                        $('#Status').html('<font color="Green"> Have </font>');
+                        $('#txtUserID').css("border-color", "Green");
+                    }
+                    else if (data == 1) {
+                        $('#Status').html('<font color="Red"> Dont have </font>');
+                        $('#txtUserID').css("border-color", "Red");
+
+                        alert('This User do not have in system')
+                    }
+                });
+        });
+
+        $('#rdoUSD').change(function () {
+            if ($(this).is(":checked")) {
+                document.getElementById("txtExRate").readOnly = true;
+                $('#txtExRate').val(1);
+                $('#txtExRate').hide();
+                $('#lbExRate').hide();
+
+
+            }
+
+        });
+        $('#rdoKHR').change(function () {
+            if ($(this).is(":checked")) {
+                document.getElementById("txtExRate").readOnly = false;
+                $('#txtExRate').val("");
+                $('#txtExRate').show();
+                $('#lbExRate').show();
+            }
+
+        });
+
+        $('#txtAmount').change(function () {
+            var Am = $('#txtAmount');
+            if (Am.val().length > 0) {
+
+                $.ajax({
+                    url: '@Url.Action("FeeCharge", "Deposit")',
+
+                    data: {
+
+                        Amt: $('#txtAmount').val()
+
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        $('#txtFee').val(data.Fee);
+
+                    },
+
+                });
+            }
+        });
+        $("#Txn").click(function () {
+
+            var F = $('#txtFee');
+
+            if (F.val().length > 0) {
+
+                $.ajax({
+                    url: '@Url.Action("CalTotal", "Deposit")',
+
+                    data: {
+                        Amt: $('#txtAmount').val(),
+                        ExRate: $('#txtExRate').val(),
+                        Fee: $('#txtFee').val(),
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        $('#txtTotal').val(data.TotalAmt);
+                        $('#Total').modal('show')
+                    },
+                });
+            }
+        });
+
+
+        $('#btnSave').click(function () {
+            var S = {}
+            S.TotalAmt = $('#txtTotal').val()
+            S.Fee = $('#txtFee').val()
+            S.SenderBalance = $('#Sender-Balance').val()
+            S.SenderAccNum = $('#txtAccIDSender').val()
+            $.ajax({
+                url: '@Url.Action("Sender_Balance", "Deposit")',
+                method: 'POST',
+                data: {
+                    bal: S
+                },
+                success: function (data) {
+                    if (data == 1) {
+
+                    }
+
+                }
+
+            });
+
+        });
+        $("#btnSave").click(function () {
+
+            $('#Total').modal('hide')
+            var Obj = {}
+
+            if (document.getElementById('rdoUSD').checked) {
+                Obj.CCY = $('#rdoUSD').val()
+            } else if (document.getElementById('rdoKHR').checked) {
+                Obj.CCY = $('#rdoKHR').val()
+            }
+                        Obj.UserID= $('#txtUserID').val()
+                        Obj.AccID= $("#txtAccIDSender").val()
+                        Obj.Fee= $("#txtFee").val()
+                        Obj.ExChange=$("#txtExRate").val()
+                        Obj.TxnAmount= $('#txtAmount').val()
+                        Obj.Total = $('#txtTotal').val()
+                        Obj.SenderBalance = $('#Sender-Balance').val()
+
+
+            $.ajax({
+                    type: 'POST', //HTTP POST Method
+                    url: '@Url.Action("InsertTxn", "Deposit")', // Controller/View
+                    dataType: 'JSON',
+                    data: { //Passing data
+                        txn:Obj
+                    },
+                   success: function (data) {
+                       if (data == 0) {
+                           $('#idMsg').modal('show')
+                       } else if (data == 1) {
+                           $('#iderrMsg').modal('show')
+                       }
+                       Dep()
+                   }
+
+            });
+        });
+    });
+</script>
+<script src="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="~/assets/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/vendors/sweetalert2/sweetalert2.all.min.js"></script>
+<script src="~/assets/vendors/apexcharts/apexcharts.js"></script>
+<script src="~/assets/js/pages/dashboard.js"></script>
+<script src="~/assets/js/main.js"></script>
+
+

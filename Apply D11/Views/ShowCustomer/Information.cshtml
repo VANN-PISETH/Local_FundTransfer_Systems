@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Information";
+}
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+<link rel="stylesheet" href="~/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+<link rel="stylesheet" href="~/assets/css/app.css">
+<link rel="shortcut icon" href="~/assets/images/favicon.svg" type="image/x-icon">
+<section id="multiple-column-form">
+    <div class="row match-height">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Customer Information</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="first-name-column">Account Number</label>
+                                        <input type="text" id="txtAccNum" class="form-control"
+                                               placeholder="Account Number" name="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="country-floating">Customer Name</label>
+                                        <input type="text" id="txtCustomerName" class="form-control"
+                                               name="" placeholder="Customer Name" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="last-name-column">Account Type</label>
+                                        <input type="text" id="txtAccType" class="form-control"
+                                               placeholder="Account Type" name="" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="company-column">Gender</label>
+                                        <input type="text" id="txtGender" class="form-control"
+                                               name="" placeholder="Gender" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Address</label>
+                                        <input type="text" id="txtAddress" class="form-control"
+                                               name="" placeholder="Address" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="city-column">CCY</label>
+                                        <input type="text" id="txtCCY" class="form-control"
+                                               placeholder="Currency" name="" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Phone</label>
+                                        <input type="text" id="txtPhone" class="form-control"
+                                               name="" placeholder="Phone" readonly>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="email-id-column">Balance</label>
+                                        <input type="email" id="txtBalance" class="form-control"
+                                               name="email-id-column" placeholder="Balance" readonly>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="button" id="btncheck"
+                                    class="btn btn-primary me-1 mb-1">
+                                Check
+                            </button>
+                            <button type="reset"
+                                    class="btn btn-light-secondary me-1 mb-1">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    function verifyacc() {
+         $('#Status').html("Checking....");
+            $.post("@Url.Action("CheckAccNum", "ShowCustomer")",
+                {
+                    AccNum: $('#txtAccNum').val()
+                },
+                function (data) {
+                    if (data == 0) {
+                        $('#Status').html('<font color="Green"> Have </font>');
+                        $('#txtAccNum').css("border-color", "Green");
+                    }
+                    else if (data == 1) {
+                        $('#Status').html('<font color="Red"> Dont have </font>');
+                        $('#txtAccNum').css("border-color", "Red");
+
+                        alert('This Account Number do not have in system')
+                    }
+                });
+    }
+      function show(){
+          var n = $('#txtAccNum');
+            if (n.val().length > 0){
+                var ANum = $('#txtAccNum').val();
+
+                $.ajax({
+                    url: '@Url.Action("ShowInformation", "ShowCustomer")',
+                    method: 'GET',
+                    data: {
+                        AccNum:ANum
+                    },
+                    success: function (data) {
+                        data = JSON.parse(data);
+                        //$('#txtAccNum').val(data.AccNum);
+                        $('#txtCustomerName').val(data.CusName);
+                        $('#txtAccType').val(data.AccType);
+                        $('#txtGender').val(data.Gender);
+                        $('#txtCCY').val(data.CCY);
+                        $('#txtPhone').val(data.Phone);
+                        $('#txtAddress').val(data.Address);
+                        $('#txtBalance').val(data.Balance);
+                    },
+                    error: function (err) {
+                        console.error(err);
+                    }
+                });
+            }
+      }
+
+    $('#btncheck').click(function () {
+        show()
+        verifyacc() 
+    });
+    
+</script>
+<script src="~/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="~/assets/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/js/main.js"></script>
+
